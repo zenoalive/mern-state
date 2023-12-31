@@ -1,0 +1,13 @@
+1) Install react, tailwind
+
+2) then run - npm run dev
+
+3) Then setting it in github repository
+	git init (to initialise git repository)
+	git add . (adds all the files)
+	git commit -m "The message"
+	Then go to github and create a new repository(mern-state is the name)
+	Back in terminal
+	git remote add -origin https://github.com/zenoalive/mern-state.git
+	git branch -M main
+	git push -u origin main (uploads our code)

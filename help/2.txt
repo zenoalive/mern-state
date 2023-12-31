@@ -1,0 +1,39 @@
+Creating pages and route (npm run dev to run the appnpi)
+
+1) Inside src, create folder pages
+	-Create the pages
+	-About.jsx
+	-Signin.jsx
+	-SignOut.jsx
+	-Profile.jsx
+	-Home.jsx
+
+2) To use the pages
+	 -Install react-router-dom
+	-npm i react-router-dom 
+	-in app.jsx, import {BrowserRouter, Routes, Route} from 'react-router-dom'
+	-	BrowseRouter
+		   Routes
+		       Route for each, like Home, About etc
+
+3) Header  Section
+	-Create components folder inside src.
+	- The header components should be added before the routes
+	- The header will have three sections, Logo Name, search bar, and Menu
+4) Install react icons
+	- npm i react-icons
+	-import Fasearch from 'react-icons'
+	- import {Link} from 'react-router-dom' and put respective list-items(<li>) inside it
+	- Commit these changes in github
+
+5) Create and run the server
+	- Create a new folder(api)
+	- npm init-y (for creating package.json file), this should be inside the root
+	- create index.js file inside api.
+	- npm i express (install express)
+	- create an express server (const app = express())
+	- in package.json, add another attribute; "type": "module" (for import, else will have to use require)
+	- Have to restart the server everytime you make any changes
+	- nodemon package solves this issue
+	- npm i nodemon
+	- inside packgae.json, "scripts": {"dev": "nodemon api/index.js", "start": "node api/index.js"}
