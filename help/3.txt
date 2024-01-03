@@ -1,0 +1,20 @@
+Connect to database
+    - Install package mongoose to interact with database
+    - Create 2 terminals, one for front end and one for backend
+    - npm run dev on both terminals to run the application
+    - Backend inside main folder, frontend inside client folder
+
+Create account on mongodb
+    - create a new project
+        - create a new database(Build a database)
+        - give username and password(ashu - HelloMalinga@345)
+        - choose cloud environment
+        - choose your ip address(if working on multiple then give IP address as 0.0.0.0)
+        - finish and close
+        - Go to overview
+            - connect
+            - copy the string in "Add your connection"
+            - const MONGO = ('the link) {inside the .env file}
+            - install npm i dotenv
+            - initialize dotenv as {dotenv.config()}
+            
