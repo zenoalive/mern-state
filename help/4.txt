@@ -1,0 +1,9 @@
+- Creating User Model
+    - The user should create data using some rules
+    - The rules are called schema
+    - Create folder "models" inside api
+    - create file user-model.js inside it
+
+- Create an API route 
+    - app.get('/', (req, res) => {})
+    - create separate routes for each module

@@ -1,4 +1,4 @@
-Creating pages and route (npm run dev to run the appnpi)
+Creating pages and route (npm run dev to run the api)
 
 1) Inside src, create folder pages
 	-Create the pages
@@ -10,9 +10,9 @@ Creating pages and route (npm run dev to run the appnpi)
 
 2) To use the pages
 	 -Install react-router-dom
-	-npm i react-router-dom 
-	-in app.jsx, import {BrowserRouter, Routes, Route} from 'react-router-dom'
-	-	BrowseRouter
+	 -npm i react-router-dom 
+	 -in app.jsx, import {BrowserRouter, Routes, Route} from 'react-router-dom'
+	   -BrowseRouter
 		   Routes
 		       Route for each, like Home, About etc
 
