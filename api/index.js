@@ -1,7 +1,8 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import router from './routes/user-route.js'
+import userRouter from './routes/user-route.js'
+import authRouter from './routes/auth-route.js' 
 // import {test} from './controllers/user-controller.js'
 
 dotenv.config()
@@ -18,6 +19,8 @@ mongoose.connect(process.env.MONGO).then(() => {
 })
 const app =express()
 
+app.use(express.json())
+
 app.listen(3000, () => {
     console.log('server is running on port 3000!! wow')
 })
@@ -27,4 +30,5 @@ app.listen(3000, () => {
 //     res.send('Test AP2I')
 // })
 
-app.use("/api/user", router)
+app.use("/api/user", userRouter)
+app.use("/api/auth", authRouter)
