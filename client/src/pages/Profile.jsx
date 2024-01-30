@@ -3,7 +3,10 @@ import { useSelector } from 'react-redux'
 import { useRef } from 'react'
 import {getDownloadURL, getStorage, ref, uploadBytesResumable} from 'firebase/storage'
 import { app } from '../firebase'
-import { updateUserStart, updateUserSuccess, updateUserFailure } from '../redux/user/UserSlice'
+import { updateUserStart, updateUserSuccess, updateUserFailure,
+   deleteUserFailure, 
+   deleteUserStart,
+   deleteUserSuccess} from '../redux/user/UserSlice'
 import { useDispatch } from 'react-redux'
 
 export default function Profile() {
@@ -93,13 +96,49 @@ export default function Profile() {
     }
 
   }
+
+  // 
+  
+  const handleDeleteUser = async () => {
+    try {
+      const userId = currentUser._id;
+      if (userId) {
+        dispatch(deleteUserStart());
+  
+        const res = await fetch(`/api/user/delete/${userId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type' : 'application/json',
+          }
+        });
+  
+        if (!res.ok) {
+          // Handle non-success status
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+  
+        const data = await res.json();
+  
+        if (data.success === false) {
+          dispatch(deleteUserFailure(data.message));
+          return;
+        }
+  
+        dispatch(deleteUserSuccess(data));
+      }
+    } catch (error) {
+      dispatch(deleteUserFailure(error.message));
+    }
+  };
+
+
   return (
     <div className='p3 max-w-lg mx-auto'>
       <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input type='file' ref= {fileRef} hidden accept='image/*' onChange={(e) => setFile(e.target.files[0])}/>
-        <img src={`${formData.avatar || currentUser.avatar}?${new Date().getTime()}` } alt='profile' className='rounded-full h-24 w-24 object-cover cursor-pointer self-center' 
-        onClick={() => fileRef.current.click()}/>
+        <img className='rounded-full h-24 w-24 object-cover cursor-pointer self-center' 
+        onClick={() => fileRef.current.click()} src={`${formData.avatar || currentUser.avatar}?${new Date().getTime()}` } alt='profile' />
         <p className='text-sm self-center'>
           {fileUploadError ? (<span className='text-red-700'> Error uploading image </span>) : filePerc > 0 && filePerc < 100 ? (<span className='
           text-slate-700'>{`Uploading ${filePerc}%`}</span>) : filePerc == 100 ? (<span className='text-green-700'>
@@ -114,7 +153,7 @@ export default function Profile() {
         <button disabled={loading} className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-90 disabled:opacity-80'>{loading ? 'loading...' : 'update'}</button>
       </form>
       <div className='flex justify-between mt-5'>
-        <span className='text-red-700 cursor-pointer'>Delete Account</span>
+        <span className='text-red-700 cursor-pointer' onClick={handleDeleteUser}>Delete Account</span>
         <span className='text-red-700 cursor-pointer'>Sign Out</span>
       </div>
       <p className='text-red-700 text-center'>{error? error : ''}</p>
