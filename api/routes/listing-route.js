@@ -5,6 +5,6 @@ import { verifyToken } from '../utils/verifyUser.js'
 const router = express.Router()
 
 // Check authentication before creating a listing
-router.post('/create',verifyToken, createListing)
+router.post('/create', verifyToken, createListing)
 
 export default router
