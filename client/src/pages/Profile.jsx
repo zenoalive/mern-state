@@ -182,6 +182,7 @@ export default function Profile() {
         console.log(error.message)
         return
       }
+      //without the below line the deleted objected is still shown on screen and goes on refreshing
       setUserListings((prev) => prev.filter((listing) => listing._id != listingId))
     } catch (error) {
       console.log(error.message)
