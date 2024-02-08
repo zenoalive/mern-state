@@ -10,11 +10,10 @@ export default function Header() {
     const navigate = useNavigate()
     const handleSubmit = (e) => {
         e.preventDefault()
-        const urlParams = new URLSearchParams(window.location.search)
+        const urlParams = new URLSearchParams(location.search)
         urlParams.set('searchTerm', searchTerm)
         const searchQuery = urlParams.toString()
         navigate(`/search?${searchQuery}`)
-
     }
 
     useEffect(() => {
@@ -42,7 +41,7 @@ export default function Header() {
                         <input type='text' placeholder='Search...' className='bg-transparent focus:outline-none w24 sm:w-64' value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}/>
                         <button>
-                            <FaSearch className='text-slate-600'></FaSearch>
+                            <FaSearch className='text-slate-600' />
                         </button>
                        
                     </form>
