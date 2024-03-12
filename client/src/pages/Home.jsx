@@ -59,7 +59,7 @@ export default function Home() {
           <br />place with ease
         </h1>
         < div className='text-gray-400 text-s sm:text-sm'>
-          Mern Estate is the best place to find your next perfect place to live
+          Lucid Estate is the best place to find your next perfect place to live
           <br />
           We have a wide variety of choices for you to choose from
         </ div>
